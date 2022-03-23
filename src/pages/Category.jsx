@@ -26,7 +26,7 @@ function Category() {
     const fetchListings = async () => {
       try {
         //get reference
-        const listRef = collection(db, "listings");
+        const listRef = collection(db, 'listings');
 
         //create a query
         const q = query(
@@ -38,11 +38,13 @@ function Category() {
 
         //execute the query
         const querySnap = await getDocs(q);
+
+
         const listings = [];
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,
-            data: doc.data,
+            data: doc.data(),
           });
         });
         setListings(listings);
@@ -52,7 +54,7 @@ function Category() {
       }
     };
     fetchListings();
-  }, []);
+  }, [params.categoryName]);
 
   return (
     <div className="category">

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {doc, updateDoc} from 'firebase/firestore'
 import { db } from "../firebase.config";
 import { async } from "@firebase/util";
 import { toast } from "react-toastify";
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import homeIcon from '../assets/svg/homeIcon.svg'
 
 function Profile() {
   const auth = getAuth();
@@ -95,13 +97,13 @@ const onEdit = ()=>{}
           </form>
         </div>
 
-        {/* <Link to='/create-listing' className='createListing'>
+        <Link to='/create-listing' className='createListing'>
           <img src={homeIcon} alt='home' />
           <p>Sell or rent your home</p>
           <img src={arrowRight} alt='arrow right' />
         </Link>
 
-        {!loading && listings?.length > 0 && (
+        {/* {!loading && listings?.length > 0 && (
           <>
             <p className='listingText'>Your Listings</p>
             <ul className='listingsList'>
